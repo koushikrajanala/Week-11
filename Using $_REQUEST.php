@@ -1,46 +1,24 @@
-
-<?php
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    if (isset($_POST["name"]) && !empty(trim($_POST["name"]))) {
-
-        $name = $_REQUEST["name"];
-
-        echo "<h2>Hello, " . htmlspecialchars($name) . "!</h2>";
-
-        echo "Data received using the \$_REQUEST array.";
-
-    } else {
-
-        echo "Please enter your name.";
-
-    }
-
-} else {
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>REQUEST Method</title>
+    <title>PHP Request Example</title>
 </head>
 <body>
 
-    <h2>Personal Information</h2>
+    <h2>PHP Request Method</h2>
 
-    <form action="request.php" method="post">
-
-        Name:
-        <input type="text" name="name" required>
-
-        <input type="submit" value="Send">
-
+    <form method="POST" action="">
+        Enter Your Name:
+        <input type="text" name="username" required>
+        <input type="submit" name="submit" value="Submit">
     </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = htmlspecialchars($_POST["username"]);
+        echo "<h3>Welcome, " . $name . "!</h3>";
+    }
+    ?>
 
 </body>
 </html>
-
-<?php
-}
-?>
